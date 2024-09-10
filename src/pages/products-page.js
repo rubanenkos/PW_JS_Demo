@@ -3,6 +3,8 @@ import { BasePage } from "./base-page";
 import { Header } from "./components/header";
 
 export class ProductsPage extends BasePage {
+  static pageLink = "inventory.html";
+
   constructor(page) {
     super(page);
     this.header = new Header(page);

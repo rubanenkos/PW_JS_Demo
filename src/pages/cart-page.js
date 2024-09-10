@@ -2,7 +2,11 @@ import { test, expect } from "@playwright/test";
 import { BasePage } from "./base-page";
 
 export class CartPage extends BasePage {
+  static pageLink = "cart.html";
+  pageTitle = "Your Cart";
   cardContainer = this.page.getByTestId("inventory-item");
+  checkoutBtn = this.page.getByTestId("checkout");
+
   /**
    * @param {import('@playwright/test').Page} page
    */
@@ -33,6 +37,12 @@ export class CartPage extends BasePage {
         .getByTestId("inventory-item-price")
         .textContent();
       expect(expectedPrice).toEqual(actualPrice);
+    });
+  }
+
+  async checkout() {
+    await test.step(`Click Checkout button`, async () => {
+      await this.checkoutBtn.click();
     });
   }
 }
