@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",  // Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES6', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNext'
+    "module": "commonjs",  // Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es6', or 'esnext'
+    "checkJs": false,  // Enable type checking on JavaScript files
+    "baseUrl": "./",  // Base directory to resolve non-relative module names
+    "paths": {  // Allow importing files from specific directories
+      "*": ["src/*"]
+    }
+  },
+  "include": [
+    "src/**/*"  // Include all JavaScript files in the 'src' directory
+  ],
+  "exclude": [
+    "node_modules"  // Exclude 'node_modules' folder from type checking
+  ]
+}

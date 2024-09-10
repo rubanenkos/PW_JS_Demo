@@ -1,0 +1,13 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="33.034504">
+<testsuite name="product.test.js" timestamp="2024-09-05T09:01:00.959Z" hostname="chromium" tests="1" failures="0" skipped="0" time="30.606" errors="0">
+<testcase name="Product tests › Check the purchase has a correct price" classname="product.test.js" time="30.606">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/product-Product-tests-Check-the-purchase-has-a-correct-price-chromium/video.webm]]
+
+[[ATTACHMENT|test-results/product-Product-tests-Check-the-purchase-has-a-correct-price-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
