@@ -2,7 +2,6 @@ import { test, expect } from "@playwright/test";
 import { CartPage } from "pages/cart-page";
 
 export class Header {
-  cartLink;
   constructor(page) {
     this.page = page;
     this.cartLink = this.page.getByTestId("shopping-cart-link");

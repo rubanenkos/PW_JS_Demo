@@ -14,7 +14,7 @@ export class CheckoutStepTwoPage extends BasePage {
     this.finishButton = this.page.getByTestId("finish");
   }
   async clickFinish() {
-    await test.step(`Click Continue button`, async () => {
+    await test.step(`Click 'Finish' button`, async () => {
       await this.finishButton.click();
       await this.page.waitForURL(`**/${CheckoutCompletePage.pageLink}`, {
         waitUntil: "domcontentloaded",

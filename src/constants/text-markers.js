@@ -1,12 +1,15 @@
-export const markers = {
-  PageTitles: {
-    Products: "Products",
-    YourCart: "Your Cart",
-    CheckoutInfo: "Checkout: Your Information",
-    CheckoutOverview: "Checkout: Overview",
+export const TEXT_MARKERS = {
+  PAGE_TITLES: {
+    PRODUCTS: "Products",
+    YOUR_CART: "Your Cart",
+    CHECKOUT_INFO: "Checkout: Your Information",
+    CHECKOUT_OVERVIEW: "Checkout: Overview",
   },
-  Messages: {
-    FailLogin: "Username and password do not match any user in this service",
-    UserLocked: "Sorry, this user has been locked out.",
+  MESSAGES: {
+    FAIL_LOGIN: "Username and password do not match any user in this service",
+    USER_LOCKED: "Sorry, this user has been locked out.",
+    ORDER_COMPLETE: "Thank you for your order!",
+    ORDER_DISPATCHED:
+      "Your order has been dispatched, and will arrive just as fast as the pony can get there!",
   },
 };

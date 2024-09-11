@@ -1,4 +1,4 @@
-export const placeholders = {
-  username: "Username",
-  password: "Password",
+export const PLACEHOLDERS = {
+  USERNAME: "Username",
+  PASSWORD: "Password",
 };

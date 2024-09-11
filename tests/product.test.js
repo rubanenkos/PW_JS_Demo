@@ -1,6 +1,6 @@
 import { test } from "../src/fixtures/user-fixtures";
-import { users } from "../src/constants/users";
-import { products } from "../src/constants/products";
+import { USERS } from "../src/constants/users";
+import { PRODUCTS } from "../src/constants/products";
 
 test.describe("Product tests", () => {
   test("Check the purchase has a correct price", async ({
@@ -8,8 +8,8 @@ test.describe("Product tests", () => {
     productsPage,
     cartPage,
   }) => {
-    const itemToBuy = products.productBackpack;
-    await loginPage.userLogin(users.standard_user);
+    const itemToBuy = PRODUCTS.BACKPACK;
+    await loginPage.userLogin(USERS.STANDARD_USER);
     const productPrice = await productsPage.pickPurchase(itemToBuy);
     await productsPage.header.openCart();
     await cartPage.checkIsPurchaseInCart(itemToBuy);
@@ -24,8 +24,8 @@ test.describe("Product tests", () => {
     checkoutStepTwoPage,
     checkoutCompletePage,
   }) => {
-    const itemToBuy = products.productTShort;
-    await loginPage.userLogin(users.standard_user);
+    const itemToBuy = PRODUCTS.T_SHORT;
+    await loginPage.userLogin(USERS.STANDARD_USER);
     await productsPage.pickPurchase(itemToBuy);
     await productsPage.header.openCart();
     await cartPage.checkIsPurchaseInCart(itemToBuy);
@@ -33,6 +33,7 @@ test.describe("Product tests", () => {
     await checkoutStepOnePage.fillOutCheckoutForm();
     await checkoutStepOnePage.clickContinue();
     await checkoutStepTwoPage.clickFinish();
+    await checkoutCompletePage.checkIsOrderCompleteMessagesShown();
     await checkoutCompletePage.clickBackHome();
   });
 });

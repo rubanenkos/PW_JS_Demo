@@ -17,22 +17,18 @@ export class CheckoutStepOnePage extends BasePage {
     this.continueButton = this.page.getByTestId("continue");
   }
 
-  async fillCheckoutForm(itemName) {
-    await test.step(`Fill checkout form`, async () => {});
-  }
-
   async fillFirstName(value) {
-    await test.step(`Fill first name`, async () => {
+    await test.step(`Fill the first name with '${value}'`, async () => {
       await this.firstNameField.fill(value);
     });
   }
   async fillLastName(value) {
-    await test.step(`Fill last name`, async () => {
+    await test.step(`Fill the last name with '${value}'`, async () => {
       await this.lastNameField.fill(value);
     });
   }
   async fillPostalCode(value) {
-    await test.step(`Fill zip code`, async () => {
+    await test.step(`Fill the zip code with '${value}'`, async () => {
       await this.postalCodeField.fill(value);
     });
   }
@@ -48,7 +44,7 @@ export class CheckoutStepOnePage extends BasePage {
   }
 
   async clickContinue() {
-    await test.step(`Click Continue button`, async () => {
+    await test.step(`Click 'Continue' button`, async () => {
       await this.continueButton.click();
       await this.page.waitForURL(`**/${CheckoutStepTwoPage.pageLink}`, {
         waitUntil: "domcontentloaded",

@@ -1,29 +1,37 @@
 import { test } from "../src/fixtures/user-fixtures";
-import { users } from "../src/constants/users";
-import { placeholders } from "../src/constants/placeholders";
-import { colors } from "../src/constants/colors";
-import { markers } from "../src/constants/text-markers";
+import { USERS } from "../src/constants/users";
+import { PLACEHOLDERS } from "../src/constants/placeholders";
+import { COLORS } from "../src/constants/colors";
+import { TEXT_MARKERS } from "../src/constants/text-markers";
 import { LoginPage } from "../src/pages/login-page";
 import { ProductsPage } from "../src/pages/products-page";
 import playwrightConfig from "playwright.config";
 
 test.describe("Login tests", () => {
-  test("Successfully login - Option 1", async ({ page }) => {
+  test("Successfully login - Option 1: without using fixtures", async ({
+    page,
+  }) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto(playwrightConfig.use.baseURL);
-    await loginPage.userLogin(users.standard_user);
+    await loginPage.userLogin(USERS.STANDARD_USER);
     const productsPage = new ProductsPage(page);
-    await productsPage.checkPageTitle(markers.PageTitles.Products);
+    await productsPage.checkPageTitle(TEXT_MARKERS.PAGE_TITLES.PRODUCTS);
   });
 
-  test("Successfully login - Option 2", async ({ loginPage, productsPage }) => {
-    await loginPage.userLogin(users.standard_user);
-    await productsPage.checkPageTitle(markers.PageTitles.Products);
+  test("Successfully login - Option 2: using fixtures", async ({
+    loginPage,
+    productsPage,
+  }) => {
+    await loginPage.userLogin(USERS.STANDARD_USER);
+    await productsPage.checkPageTitle(TEXT_MARKERS.PAGE_TITLES.PRODUCTS);
   });
 
   const usersList = [
-    { user: users.unregistered_user, message: markers.Messages.FailLogin },
-    { user: users.locked_out_user, message: markers.Messages.UserLocked },
+    {
+      user: USERS.UNREGISTERED_USER,
+      message: TEXT_MARKERS.MESSAGES.FAIL_LOGIN,
+    },
+    { user: USERS.LOCKED_OUT_USER, message: TEXT_MARKERS.MESSAGES.USER_LOCKED },
   ];
   for (const userData of usersList) {
     test(`Failed login for user: ${userData.user.title}`, async ({
@@ -31,15 +39,15 @@ test.describe("Login tests", () => {
     }) => {
       await loginPage.userLogin(userData.user);
       await loginPage.checkFailLoginMassage(userData.message);
-      await loginPage.checkErrorIconIsShown(placeholders.username);
-      await loginPage.checkErrorIconIsShown(placeholders.password);
+      await loginPage.checkErrorIconIsShown(PLACEHOLDERS.USERNAME);
+      await loginPage.checkErrorIconIsShown(PLACEHOLDERS.PASSWORD);
       await loginPage.checkIsFieldHighlighted(
-        placeholders.username,
-        colors.red226_35_26
+        PLACEHOLDERS.USERNAME,
+        COLORS.RED_226_35_26
       );
       await loginPage.checkIsFieldHighlighted(
-        placeholders.password,
-        colors.red226_35_26
+        PLACEHOLDERS.PASSWORD,
+        COLORS.RED_226_35_26
       );
     });
   }

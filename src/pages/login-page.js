@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { BasePage } from "./base-page";
-import { placeholders } from "constants/placeholders";
+import { PLACEHOLDERS } from "constants/placeholders";
 import { getElementPropertyValue } from "../utils/utils";
 
 export class LoginPage extends BasePage {
@@ -15,13 +15,13 @@ export class LoginPage extends BasePage {
 
   #verifyPlaceholderName(placeholderName) {
     let errorIconByField;
-    if (placeholderName === placeholders.username) {
+    if (placeholderName === PLACEHOLDERS.USERNAME) {
       errorIconByField = this.usernameField;
-    } else if (placeholderName === placeholders.password) {
+    } else if (placeholderName === PLACEHOLDERS.PASSWORD) {
       errorIconByField = this.passwordField;
     } else {
       throw new Error(
-        `Invalid parameter. Expected '${placeholders.username}' or '${placeholders.password}'.`
+        `Invalid parameter. Expected '${PLACEHOLDERS.USERNAME}' or '${PLACEHOLDERS.PASSWORD}'.`
       );
     }
     return errorIconByField;
