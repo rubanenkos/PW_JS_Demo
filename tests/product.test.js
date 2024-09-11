@@ -16,7 +16,7 @@ test.describe("Product tests", () => {
     await cartPage.checkIsPurchaseHasCorrectPrice(itemToBuy, productPrice);
   });
 
-  test("Check that the product can be purchased", async ({
+  test("Check that the product can be purchased (using fixtures)", async ({
     loginPage,
     productsPage,
     cartPage,
@@ -35,5 +35,21 @@ test.describe("Product tests", () => {
     await checkoutStepTwoPage.clickFinish();
     await checkoutCompletePage.checkIsOrderCompleteMessagesShown();
     await checkoutCompletePage.clickBackHome();
+  });
+
+  test("Check that the product can be purchased (using a god fixture)", async ({
+    app,
+  }) => {
+    const itemToBuy = PRODUCTS.T_SHORT;
+    await app.loginPage.userLogin(USERS.STANDARD_USER);
+    await app.productsPage.pickPurchase(itemToBuy);
+    await app.productsPage.header.openCart();
+    await app.cartPage.checkIsPurchaseInCart(itemToBuy);
+    await app.cartPage.checkout();
+    await app.checkoutStepOnePage.fillOutCheckoutForm();
+    await app.checkoutStepOnePage.clickContinue();
+    await app.checkoutStepTwoPage.clickFinish();
+    await app.checkoutCompletePage.checkIsOrderCompleteMessagesShown();
+    await app.checkoutCompletePage.clickBackHome();
   });
 });

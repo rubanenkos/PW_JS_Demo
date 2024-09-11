@@ -8,9 +8,7 @@ import { ProductsPage } from "../src/pages/products-page";
 import playwrightConfig from "playwright.config";
 
 test.describe("Login tests", () => {
-  test("Successfully login - Option 1: without using fixtures", async ({
-    page,
-  }) => {
+  test("Successfully login (without using fixtures)", async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto(playwrightConfig.use.baseURL);
     await loginPage.userLogin(USERS.STANDARD_USER);
@@ -18,7 +16,7 @@ test.describe("Login tests", () => {
     await productsPage.checkPageTitle(TEXT_MARKERS.PAGE_TITLES.PRODUCTS);
   });
 
-  test("Successfully login - Option 2: using fixtures", async ({
+  test("Successfully login (using fixtures)", async ({
     loginPage,
     productsPage,
   }) => {

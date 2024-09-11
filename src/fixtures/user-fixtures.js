@@ -35,6 +35,20 @@ export const test = base.extend({
     await use(new CheckoutCompletePage(page));
     await page.close();
   },
+
+  app: async ({ page }, use) => {
+    await page.goto(playwrightConfig.use.baseURL);
+    const pages = {
+      loginPage: new LoginPage(page),
+      productsPage: new ProductsPage(page),
+      cartPage: new CartPage(page),
+      checkoutStepOnePage: new CheckoutStepOnePage(page),
+      checkoutStepTwoPage: new CheckoutStepTwoPage(page),
+      checkoutCompletePage: new CheckoutCompletePage(page),
+    };
+    await use(pages);
+    await page.close();
+  },
 });
 
 export { expect };
