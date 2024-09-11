@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { test as base, expect } from "@playwright/test";
 import { LoginPage } from "pages/login-page";
 import { ProductsPage } from "pages/products-page";
